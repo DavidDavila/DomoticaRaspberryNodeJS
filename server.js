@@ -1,16 +1,20 @@
 import express from 'express';
-import {Voice} from './../services/voice.js';
+import path from 'path';
+import { Led } from './../services/led.js';
 
 const app      = express();
 const hostname = 'localhost';
 const port     = 3007;
+
+app.use(express.static('client'));
+
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  	res.sendFile(path.join(__dirname + '/../client/index.html'));
 });
-app.get('/api/voice/talk/:msg', function (req, res) {
-	var msg = req.params.msg;
-	Voice.talk(msg)
-  res.send('Hello World');
+app.get('/api/led/:color', function (req, res) {
+	var color = req.params.color;
+	res.send(Led.turnOn(color));
+  
 });
 app.listen(port, function (error) { 
     console.info(`==> 🌎  Open up http://${hostname}:${port}/ in your browser.`);
