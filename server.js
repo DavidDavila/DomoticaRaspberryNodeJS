@@ -1,7 +1,6 @@
-import express from 'express';
-import path from 'path';
-import { Led } from './../services/led.js';
 
+var express = require('express');
+var Led = require('./services/led.js');
 const app      = express();
 const hostname = 'localhost';
 const port     = 3007;

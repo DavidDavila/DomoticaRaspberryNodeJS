@@ -1,8 +1,5 @@
-exports.Led = {
-	turnOn : function(color){
-		return color+' encendido'
-	},
-	turnOff : function(color){
-		return color+' apagado'
-	}
-}
+var Led = module.exports = {};
+Led.turnOn = function(color){
+	console.log('led '+color)
+	return color+' encendido'
+};
